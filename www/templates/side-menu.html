@@ -1,0 +1,113 @@
+<ion-side-menus enable-menu-with-back-views="true">
+
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+            <h1 class="title">S  T  O  C  K  I  S  T</h1>
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear  ion-ios7-search" menu-toggle="right">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-content>
+            <ul class="list">
+                <!-- Note each link has the 'menu-close' attribute so the menu auto closes when clicking on one of these links -->
+                <!--<label class="item item-input">
+                    <i class="icon ion-ios7-search placeholder-icon"></i>
+                    <input type="text" placeholder="Search">
+                </label>-->
+                <a href="#/home" class="item item-icon-left" menu-close>
+                    <i class="icon ion-ios7-home-outline"></i>
+                    Home</a>
+                <a href="#/search" class="item item-icon-left" menu-close>
+                    <i class="icon ion-compass"></i>
+                    Discover
+                </a>
+                <a href="#/profile" class="item item-icon-left" menu-close>
+                    <i class="icon ion-ios7-person-outline"></i>
+                    Profile
+                </a>
+                <a href="#/setting" class="item item-icon-left" menu-close>
+                    <i class="icon ion-ios7-gear-outline"></i>
+                    Setting
+                </a>
+                <a href="#/log_out" class="item item-icon-left" menu-close>
+                    <i class="icon ion-log-out"></i>
+                    Log out
+                </a>
+            </ul>
+        </ion-content>
+    </ion-side-menu>
+    <ion-side-menu side="right">
+        <!--<ion-header-bar class="bar-stable">
+            &lt;!&ndash;<h1 class="title">Right Menu</h1>&ndash;&gt;
+        </ion-header-bar>-->
+        <ion-content>
+            <ul class="list">
+                <span class="item item-input">
+                    <i class="icon ion-ios7-search placeholder-icon"></i>
+                    <input type="text" ng-model="search" placeholder="Store Search" ng-change="onType(search)">
+                    <button ng-show="search.length"
+                            class="button button-icon ion-android-close input-button"
+                            on-touch="clearSearch()">
+                    </button>
+                </span>
+            </ul>
+        </ion-content>
+       <!-- <ion-footer-bar align-title="left" class="bar-stable">
+            <div class="buttons" style="width: 50%" >
+                <button class="button" style="width: 100%">1/8 Red</button>
+            </div>
+            &lt;!&ndash;<h1 class="title">Title!</h1>&ndash;&gt;
+            <div class="buttons" style="width: 50%"  ng-click="doSomething()">
+                <button class="button" style="width: 100%" >Buy</button>
+            </div>
+        </ion-footer-bar>-->
+    </ion-side-menu>
+
+</ion-side-menus>
+
+<script id="templates/right-sidebar-filter.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content>
+            <div class="list">
+                <ul ng-repeat="f in filterTypes">
+                    <a class="item" on-tap="filterRightSideBar(f.type)">
+                        {{f.value}}
+                    </a>
+                </ul>
+            </div>
+        </ion-content>
+    </ion-popover-view>
+</script>
+
+<script id="templates/home-feed-filter.html" type="text/ng-template">
+    <ion-popover-view>
+        <ion-content style="height: auto;">
+            <div class="list">
+                <ion-checkbox ng-model="showAll" ng-model="showAll" ng-change="homeFeedFilterChanged(showAll)">Show All</ion-checkbox>
+                <ion-checkbox ng-repeat="c in circles" ng-model="c.checked" ng-change="homeFeedFilterChanged(c)">{{c.name}}</ion-checkbox>
+            </div>
+            <div style="margin: 10px">
+                <button class="button button-block button-calm icon-left ion-plus-circled" >
+                    Add a circle
+                </button>
+                <button class="button button-block button-stable icon-left ion-android-done pull-right">
+                    Done
+                </button>
+            </div>
+
+        </ion-content>
+    </ion-popover-view>
+</script>

@@ -1,11 +1,11 @@
-// Ionic Starter App
+// Ionic stockist App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'stockist' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var facebookExample = angular.module('starter', ['ionic', 'ngStorage', 'ngCordova'])
+var myApp = angular.module('stockist', ['ionic', 'ngStorage', 'ngCordova'])
 
-facebookExample.run(function($ionicPlatform) {
+myApp.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -18,8 +18,23 @@ facebookExample.run(function($ionicPlatform) {
     });
 });
 
-facebookExample.config(function($stateProvider, $urlRouterProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
+        .state('sidemenu', {
+            url: '',
+            abstract: true,
+            templateUrl: "templates/side-menu.html",
+            controller: 'SideMenu'
+        })
+        .state('sidemenu.home', {
+            url: '/home',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/home.html',
+                    controller: 'HomeTabCtrl'
+                }
+            }
+        })
         .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
@@ -38,21 +53,22 @@ facebookExample.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 });
 
-facebookExample.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location) {
+myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location) {
 
     $scope.login = function() {
-        $cordovaOauth.facebook("884166234964491", ["email", "read_stream", "user_website", "user_location", "user_relationships"]).then(function(result) {
-            $localStorage.accessToken = result.access_token;
-            $location.path("/profile");
-        }, function(error) {
-            alert("There was a problem signing in!  See the console for logs");
-            console.log(error);
-        });
+        $location.path("/home");
+        //$cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
+        //    $localStorage.accessToken = result.access_token;
+        //    $location.path("/home");
+        //}, function(error) {
+        //    alert("There was a problem signing in!  See the console for logs");
+        //    console.log(error);
+        //});
     };
 
 });
 
-facebookExample.controller("ProfileController", function($scope, $http, $localStorage, $location) {
+myApp.controller("ProfileController", function($scope, $http, $localStorage, $location) {
 
     $scope.init = function() {
         if($localStorage.hasOwnProperty("accessToken") === true) {
@@ -70,7 +86,7 @@ facebookExample.controller("ProfileController", function($scope, $http, $localSt
 
 });
 
-facebookExample.controller("FeedController", function($scope, $http, $localStorage, $location) {
+myApp.controller("FeedController", function($scope, $http, $localStorage, $location) {
 
     $scope.init = function() {
         if($localStorage.hasOwnProperty("accessToken") === true) {
@@ -89,4 +105,25 @@ facebookExample.controller("FeedController", function($scope, $http, $localStora
         }
     };
 
+});
+
+myApp.controller('MainController', function($scope,$ionicPlatform,$cordovaDevice) {
+    //$scope.platform = $cordovaDevice.getPlatform();
+    //$scope.platform = 'iOS';
+    document.body.classList.add('platform-iOS');
+
+    $ionicPlatform.ready(function() {
+        $scope.platform = $cordovaDevice.getPlatform();
+        $scope.platform = 'android';
+        debugger;
+        console.log("READY");
+        //document.body.classList.remove('platform-ios');
+        //document.body.classList.remove('platform-android');
+        //if($scope.platform=='iOS'){
+        //    document.body.classList.add('platform-ios');
+        //}
+        //else{
+        //    document.body.classList.add('platform-android');
+        //}
+    });
 });
