@@ -4,7 +4,7 @@
 
 
 
-myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegate) {
+myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegate,$localStorage, $location) {
 
     $ionicPopover.fromTemplateUrl('templates/right-sidebar-filter.html', {
         scope: $scope
@@ -36,5 +36,10 @@ myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegat
     $scope.onType = function(val) {
         console.log(val);
     };
+
+    $scope.logOut =function(){
+        $localStorage.accessToken = undefined;
+        $location.path("/login");
+    }
 
 })

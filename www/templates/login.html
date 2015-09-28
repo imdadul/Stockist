@@ -1,11 +1,18 @@
 <ion-view ng-controller="LoginController" title="Facebook Example">
     <ion-content>
-        <div class="padding">
-            <button ng-click="login()" class="button button-block button-balanced">Oauth Sign In</button>
-            <p>
-                Clicking the above button will initiate an official browser sign in flow with Facebook.  You
-                will be redirected to the Facebook website to enter your credentials.
-            </p>
+        <div class="padding col col-67 col-offset-20" style="font-size: 25px;margin-top: 15%">
+                   S T O C K I S T
+        </div>
+        <div style="margin-top: 15%" class="padding">
+            <div class="row responsive-sm" >
+                <a  ng-click="fbLogin()" ><img class="col col-33 col-offset-33" src="img/log_fb.png"></a>
+            </div>
+            <div class="row responsive-sm">
+                <a ng-click="twitterLogin()"><img class="col col-33 col-offset-33" src="img/log_twt.png"></a>
+            </div>
+            <div class="row responsive-sm">
+                <a><img  class="col col-33 col-offset-33" src="img/log_gmail.jpg"></a>
+            </div>
         </div>
     </ion-content>
 </ion-view>

@@ -53,20 +53,6 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 });
 
-myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location) {
-
-    $scope.login = function() {
-        $location.path("/home");
-        //$cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
-        //    $localStorage.accessToken = result.access_token;
-        //    $location.path("/home");
-        //}, function(error) {
-        //    alert("There was a problem signing in!  See the console for logs");
-        //    console.log(error);
-        //});
-    };
-
-});
 
 myApp.controller("ProfileController", function($scope, $http, $localStorage, $location) {
 
