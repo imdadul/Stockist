@@ -1,7 +1,7 @@
 {
-  "name": "facebookexample",
+  "name": "Stockist",
   "version": "1.0.0",
-  "description": "FacebookExample: An Ionic project",
+  "description": "Stockist: Shopping aggregator",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",

@@ -3,19 +3,33 @@
  */
 
 
-myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout) {
+myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Api) {
 
+    var currentProductIDs=[];
+    var getCurrentProductIDs = function(){
+        $scope.products.forEach(function(i){
+            currentProductIDs.push(i._id);
+        })
+        return currentProductIDs;
+    }
+    Api.getLatestProducts({}).then(function(res){
+        $scope.products = res.data;
+    },function(err){
+    })
 
-    console.log('Home contrller!');
-    $scope.doRefresh = function() {
-        $timeout( function() {
-            //simulate async response
-            // $scope.items.push('New Item ' + Math.floor(Math.random() * 1000) + 4);
-
-            //Stop the ion-refresher from spinning
-            $scope.$broadcast('scroll.refreshComplete');
-
-        }, 1000);
-
+    $scope.loadMore = function() {
+        if($scope.products == undefined) {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            return;
+        }
+        else
+            Api.getLatestProducts({currentShown:getCurrentProductIDs()}).then(function(res){
+                var moreItem = res.data;
+                moreItem.forEach(function (i) {
+                    $scope.products.push(i);
+                })
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            },function(err){
+            });
     };
 });
