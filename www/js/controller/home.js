@@ -6,16 +6,22 @@
 myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Api) {
 
     var currentProductIDs=[];
-    var getCurrentProductIDs = function(){
-        $scope.products.forEach(function(i){
-            currentProductIDs.push(i._id);
-        })
-        return currentProductIDs;
-    }
-    Api.getLatestProducts({}).then(function(res){
-        $scope.products = res.data;
-    },function(err){
-    })
+    $scope.products = [];
+    //var getCurrentProductIDs = function(){
+    //    $scope.products.forEach(function(i){
+    //        currentProductIDs.push(i._id);
+    //    })
+    //    return currentProductIDs;
+    //}
+    //$scope.$broadcast('scroll.infiniteScrollComplete');
+    //Api.getLatestProducts({}).then(function(res){
+    //    var items = res.data;
+    //    items.forEach(function (i) {
+    //        $scope.products.push(i);
+    //        currentProductIDs.push(i._id);
+    //    })
+    //},function(err){
+    //})
 
     $scope.loadMore = function() {
         if($scope.products == undefined) {
@@ -23,10 +29,11 @@ myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Ap
             return;
         }
         else
-            Api.getLatestProducts({currentShown:getCurrentProductIDs()}).then(function(res){
+            Api.getLatestProducts({currentShown:currentProductIDs}).then(function(res){
                 var moreItem = res.data;
                 moreItem.forEach(function (i) {
                     $scope.products.push(i);
+                    currentProductIDs.push(i._id);
                 })
                 $scope.$broadcast('scroll.infiniteScrollComplete');
             },function(err){
