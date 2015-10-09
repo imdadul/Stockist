@@ -1,16 +1,7 @@
 <ion-view>
-    <ion-nav-title>
-            <a class="" ng-click="centerTopPopover.show($event)">
-                <i class="icon ion-funnel"></i>
-                Click to filter feed (Show all)
-            </a>
-    </ion-nav-title>
-    <nav id="add_listing" mfb-menu position="br" effect="zoomin"
-         active-icon="ion-edit" resting-icon="ion-plus-round"
-          ng-click="gotoAddListing(this)">
-    </nav>
+
     <ion-content header-shrink scroll-event-interval="5">
-        <div class="row">
+        <div class="row"  ng-if="isGridView == true">
             <div class="col col-50" >
                 <div ng-repeat="p in products" ng-if="$index%2==0">
                     <div class="item item-avatar " style="min-height: 1px;">
@@ -20,7 +11,12 @@
                     <div class="item item-image">
                         <img  src="http:{{p.imgUrl}}">
                     </div>
-                    <div class="item item-avatar" style="padding-left: 3px">
+                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
+                        <button style="padding-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
+                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                    </div>
+                    <div class="item item-avatar" style="padding-left: 2%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
                         <h2>{{p.brand}}</h2>
                         <p>{{p.productName}}</p>
@@ -39,8 +35,39 @@
                     <div class="item item-image">
                         <img  src="http:{{p.imgUrl}}">
                     </div>
-                    <div class="item item-avatar" style="padding-left: 3px">
+                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
+                        <button style="padding-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
+                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                    </div>
+                    <div class="item item-avatar" style="padding-left: 2%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
+                        <h2>{{p.brand}}</h2>
+                        <p>{{p.productName}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" ng-if="isGridView == false">
+            <div class="col col-100" >
+                <div ng-repeat="p in products">
+                    <div class="item item-avatar " style="min-height: 1px;">
+                        <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
+                        <h2 style="margin-left: 33%;">{{p.store.fullName}}</h2>
+                    </div>
+                    <div class="item item-image">
+                        <img  src="http:{{p.imgUrl}}">
+                    </div>
+                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
+                        <button style="padding-right: 95%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
+                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                    </div>
+                    <div class="item item-avatar"  style="padding-left: 2%">
+                        <span style="float: right !important; margin-right: 2%">{{p.price | currency}}</span>
                         <h2>{{p.brand}}</h2>
                         <p>{{p.productName}}</p>
                     </div>

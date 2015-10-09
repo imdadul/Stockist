@@ -3,25 +3,10 @@
  */
 
 
-myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Api) {
+myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Api,$localStorage) {
 
     var currentProductIDs=[];
     $scope.products = [];
-    //var getCurrentProductIDs = function(){
-    //    $scope.products.forEach(function(i){
-    //        currentProductIDs.push(i._id);
-    //    })
-    //    return currentProductIDs;
-    //}
-    //$scope.$broadcast('scroll.infiniteScrollComplete');
-    //Api.getLatestProducts({}).then(function(res){
-    //    var items = res.data;
-    //    items.forEach(function (i) {
-    //        $scope.products.push(i);
-    //        currentProductIDs.push(i._id);
-    //    })
-    //},function(err){
-    //})
 
     $scope.loadMore = function() {
         if($scope.products == undefined) {
@@ -39,4 +24,25 @@ myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Ap
             },function(err){
             });
     };
+
+    $scope.likeOrUnlike = function(p){
+        if($localStorage.accessToken == undefined) return;
+        if(p.liked) {
+            deleteFromFavourite(p);
+        }
+        else{
+            addToFavorite(p);
+        }
+    }
+    var addToFavorite = function(p){
+        Api.addToFavorite({productUrl: p.url}).then(function(){
+            p.liked = true;
+        })
+    }
+
+    var deleteFromFavourite = function(p){
+        Api.deleteFromFavourite({productUrl: p.url}).then(function(){
+            p.liked = false;
+        })
+    }
 });

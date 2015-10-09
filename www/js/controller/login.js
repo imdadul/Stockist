@@ -41,8 +41,11 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
         else
             $cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
                 $localStorage.accessToken = result.access_token;
-                show(result.access_token);
-                //$location.path("/home");
+                //show(result.access_token);
+                if($localStorage.accessToken){
+
+                    $location.path("/home");
+                }
             }, function(error) {
                 alert("There was a problem signing in!  See the console for logs");
                 console.log(error);
@@ -57,7 +60,7 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
         else {
             try{
             $cordovaOauth.twitter("K0vruTpXWLebnNPMNWBYfp14S", "tMZl5WeYUEWYj6doqwhr0XGbzgAeF2vmVpL7hNERHXod9aFwM1").then(function (result) {
-                $localStorage.oauthToken = result.oauth_token;
+                $localStorage.accessToken = result.oauth_token;
                 show(result.oauth_token);
                 //$location.path("/home");
             }, function (error) {

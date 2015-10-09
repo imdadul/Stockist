@@ -42,4 +42,10 @@ myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegat
         $location.path("/login");
     }
 
+    $scope.isGridView = false;
+    $scope.toggleView = function(){
+        $scope.isGridView=!$scope.isGridView;
+    }
+
+
 })
