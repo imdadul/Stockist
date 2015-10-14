@@ -3,10 +3,10 @@
     <ion-content header-shrink scroll-event-interval="5">
         <div class="row"  ng-if="isGridView == true">
             <div class="col col-50" >
-                <div ng-repeat="p in products" ng-if="$index%2==0">
+                <div style="margin-bottom:3% " ng-repeat="p in products" ng-if="$index%2==0">
                     <div class="item item-avatar " style="min-height: 1px;">
                         <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
-                        <h2 style="margin-left: 33%;">{{p.store.fullName}}</h2>
+                        <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
                     <div class="item item-image">
                         <img  src="http:{{p.imgUrl}}">
@@ -27,10 +27,10 @@
 
 
             <div class="col col-50">
-                <div ng-repeat="p in products" ng-if="$index%2==1">
+                <div style="margin-bottom:3% " ng-repeat="p in products" ng-if="$index%2==1">
                     <div class="item item-avatar " style="min-height: 1px;">
                         <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
-                        <h2 style="margin-left: 33%;">{{p.store.fullName}}</h2>
+                        <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
                     <div class="item item-image">
                         <img  src="http:{{p.imgUrl}}">
@@ -53,17 +53,17 @@
 
         <div class="row" ng-if="isGridView == false">
             <div class="col col-100" >
-                <div ng-repeat="p in products">
+                <div style="margin-bottom:3% " ng-repeat="p in products">
                     <div class="item item-avatar " style="min-height: 1px;">
                         <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
-                        <h2 style="margin-left: 33%;">{{p.store.fullName}}</h2>
+                        <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
                     <div class="item item-image" >
                         <!--<div class="image img" style="background-image: url('http:{{p.imgUrl}}');background-repeat: no-repeat;
                             background-position: center center; background-size: cover;"></div>-->
                         <img  src="http:{{p.imgUrl}}">
                     </div>
-                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
+                    <div class="bar" style="margin-left: 2%; margin-top:-10%;background-color: transparent;border: none;">
                         <button style="margin-right: 95%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
                                 ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
                         <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
