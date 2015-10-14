@@ -12,9 +12,9 @@
                         <img  src="http:{{p.imgUrl}}">
                     </div>
                     <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
-                        <button style="padding-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                        <button style="margin-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
                                 ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
                     </div>
                     <div class="item item-avatar" style="padding-left: 2%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
@@ -36,9 +36,9 @@
                         <img  src="http:{{p.imgUrl}}">
                     </div>
                     <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
-                        <button style="padding-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                        <button style="margin-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
                                 ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
                     </div>
                     <div class="item item-avatar" style="padding-left: 2%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
@@ -58,13 +58,15 @@
                         <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
                         <h2 style="margin-left: 33%;">{{p.store.fullName}}</h2>
                     </div>
-                    <div class="item item-image">
+                    <div class="item item-image" >
+                        <!--<div class="image img" style="background-image: url('http:{{p.imgUrl}}');background-repeat: no-repeat;
+                            background-position: center center; background-size: cover;"></div>-->
                         <img  src="http:{{p.imgUrl}}">
                     </div>
                     <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
-                        <button style="padding-right: 95%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
+                        <button style="margin-right: 95%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
                                 ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="padding-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
                     </div>
                     <div class="item item-avatar"  style="padding-left: 2%">
                         <span style="float: right !important; margin-right: 2%">{{p.price | currency}}</span>

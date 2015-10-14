@@ -100,16 +100,14 @@ myApp.controller('MainController', function($scope,$ionicPlatform,$cordovaDevice
 
     $ionicPlatform.ready(function() {
         $scope.platform = $cordovaDevice.getPlatform();
-        $scope.platform = 'android';
-        debugger;
-        console.log("READY");
-        //document.body.classList.remove('platform-ios');
-        //document.body.classList.remove('platform-android');
-        //if($scope.platform=='iOS'){
-        //    document.body.classList.add('platform-ios');
-        //}
-        //else{
-        //    document.body.classList.add('platform-android');
-        //}
+        //$scope.platform = 'android';
+        document.body.classList.remove('platform-ios');
+        document.body.classList.remove('platform-android');
+        if($scope.platform=='iOS'){
+            document.body.classList.add('platform-ios');
+        }
+        else{
+            document.body.classList.add('platform-android');
+        }
     });
 });

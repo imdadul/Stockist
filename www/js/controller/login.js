@@ -52,6 +52,26 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
             });
     };
 
+    $scope.googleLogin = function() {
+        if($localStorage.accessToken){
+            $location.path("/home");
+        }
+        else
+            $cordovaOauth.google("176339995166-p2deqnc9mqohm6lnmkvjti68tr2g4sej.apps.googleusercontent.com",
+                ["https://www.googleapis.com/auth/userinfo.profile"]).then(function(result) {
+                show(JSON.stringify(result))
+                //$localStorage.accessToken = result.access_token;
+                ////show(result.access_token);
+                //if($localStorage.accessToken){
+//
+                //    $location.path("/home");
+                //}
+            }, function(error) {
+                alert("There was a problem signing in!  See the console for logs");
+                console.log(error);
+            });
+    };
+
     $scope.twitterLogin = function(){
         // http://blog.ionic.io/displaying-the-twitter-feed-within-your-ionic-app/
         if($localStorage.oauthToken){

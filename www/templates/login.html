@@ -1,17 +1,25 @@
 <ion-view ng-controller="LoginController" title="Facebook Example">
     <ion-content>
-        <div class="padding col col-67 col-offset-20" style="font-size: 25px;margin-top: 15%">
+        <!--<div class="padding col col-67 col-offset-20" style="font-size: 25px;margin-top: 15%">
                    S T O C K I S T
-        </div>
-        <div style="margin-top: 15%" class="padding">
-            <div class="row responsive-sm" >
-                <a  ng-click="fbLogin()" ><img class="col col-33 col-offset-33" src="img/log_fb.png"></a>
+        </div>-->
+       <!-- <div class="row responsive-sm col col-67 col-offset-20" style="font-size: 25px;margin-top: 15%;text-align: center">
+            S T O C K I S T
+        </div>-->
+        <div class="padding  responsive-sm responsive-md responsive-lg">
+            <div  style="margin-bottom: 5%;margin-top: 5%" class="row responsive-sm" >
+                <span class="col col-33 col-offset-33" style="font-size: 25px;margin-top: 15%;text-align: center">
+                    S T O C K I S T
+                </span>
             </div>
-            <div class="row responsive-sm">
-                <a ng-click="twitterLogin()"><img class="col col-33 col-offset-33" src="img/log_twt.png"></a>
+            <div class="row responsive-sm responsive-md responsive-lg" >
+                <a class="col col-33 col-offset-33" style="text-align: center" ng-click="fbLogin()" ><img  src="img/log_fb.png"></a>
             </div>
-            <div class="row responsive-sm">
-                <a><img  class="col col-33 col-offset-33" src="img/log_gmail.jpg"></a>
+            <div class="row responsive-sm responsive-md responsive-lg">
+                <a class="col col-33 col-offset-33" style="text-align: center" ng-click="twitterLogin()"><img  src="img/log_twt.png"></a>
+            </div>
+            <div class="row responsive-sm responsive-md responsive-lg">
+                <a class="col col-33 col-offset-33" style="text-align: center" ng-click="googleLogin()"><img   src="img/log_gmail.jpg"></a>
             </div>
         </div>
     </ion-content>
