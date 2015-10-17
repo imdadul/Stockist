@@ -3,7 +3,7 @@
  */
 
 
-myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location,$ionicPopup) {
+myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location,$ionicPopup,Api,$http) {
 
     var show =function(res){
         var myPopup = $ionicPopup.show({
@@ -32,24 +32,26 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
         });
     }
 
-
-
     $scope.fbLogin = function() {
         if($localStorage.accessToken){
             $location.path("/home");
         }
-        else
+        else {
             $cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
                 $localStorage.accessToken = result.access_token;
-                //show(JSON.stringify(result))
-                //show(result.access_token);
-                if($localStorage.accessToken){
-                    $location.path("/home");
-                }
+                Api.getFbUserID($localStorage.accessToken).then(function(res){
+                    $localStorage.userID = res.data.id;
+                    $localStorage.email = res.data.email;
+                    $localStorage.name = res.data.name;
+                    if($localStorage.userID){
+                        $location.path("/home");
+                    }
+                });
             }, function(error) {
                 alert("There was a problem signing in!  See the console for logs");
                 console.log(error);
             });
+        }
     };
 
     $scope.googleLogin = function() {
