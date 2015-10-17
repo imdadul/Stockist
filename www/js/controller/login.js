@@ -41,9 +41,9 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
         else
             $cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
                 $localStorage.accessToken = result.access_token;
+                //show(JSON.stringify(result))
                 //show(result.access_token);
                 if($localStorage.accessToken){
-
                     $location.path("/home");
                 }
             }, function(error) {

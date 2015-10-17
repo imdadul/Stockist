@@ -96,18 +96,18 @@ myApp.controller("FeedController", function($scope, $http, $localStorage, $locat
 myApp.controller('MainController', function($scope,$ionicPlatform,$cordovaDevice) {
     //$scope.platform = $cordovaDevice.getPlatform();
     //$scope.platform = 'iOS';
-    document.body.classList.add('platform-iOS');
-
-    $ionicPlatform.ready(function() {
-        $scope.platform = $cordovaDevice.getPlatform();
-        //$scope.platform = 'android';
-        document.body.classList.remove('platform-ios');
-        document.body.classList.remove('platform-android');
-        if($scope.platform=='iOS'){
-            document.body.classList.add('platform-ios');
-        }
-        else{
-            document.body.classList.add('platform-android');
-        }
-    });
+    //document.body.classList.add('platform-iOS');
+//
+    //$ionicPlatform.ready(function() {
+    //    $scope.platform = $cordovaDevice.getPlatform();
+    //    //$scope.platform = 'android';
+    //    document.body.classList.remove('platform-ios');
+    //    document.body.classList.remove('platform-android');
+    //    if($scope.platform=='iOS'){
+    //        document.body.classList.add('platform-ios');
+    //    }
+    //    else{
+    //        document.body.classList.add('platform-android');
+    //    }
+    //});
 });

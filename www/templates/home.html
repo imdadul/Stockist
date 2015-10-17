@@ -9,14 +9,14 @@
                         <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
                     <div class="item item-image">
-                        <img  src="http:{{p.imgUrl}}">
+                        <img  src="{{UrlWithHttp(p.imgUrl)}}">
                     </div>
-                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
-                        <button style="margin-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
-                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                    <div class="item button bar" style="margin-top:-21%;background-color: transparent;border: none;">
+                        <button style="margin-right: 93%;color: #000000;" ng-click="likeOrUnlike(p)"
+                                ng-class="(p.liked==true) ? 'ion-ios7-heart' : 'ion-ios7-heart-outline'" class="button button-icon button-clear"></button>
+                        <button style="margin-right: 5%;color: #000000;bottom: auto;top:auto;" class="button button-icon  ion-ios7-upload-outline"></button>
                     </div>
-                    <div class="item item-avatar" style="padding-left: 2%">
+                    <div class="item item-avatar" style="padding-left: 2%;margin-top: -12%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
                         <h2>{{p.brand}}</h2>
                         <p>{{p.productName}}</p>
@@ -33,14 +33,14 @@
                         <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
                     <div class="item item-image">
-                        <img  src="http:{{p.imgUrl}}">
+                        <img  src="{{UrlWithHttp(p.imgUrl)}}">
                     </div>
-                    <div class="item button bar" style="margin-top:-10%;background-color: transparent;border: none;">
+                    <div class="item button bar" style="margin-top:-21%;background-color: transparent;border: none;">
                         <button style="margin-right: 93%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
-                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                                ng-class="(p.liked==true) ? 'ion-ios7-heart' : 'ion-ios7-heart-outline'" class="button button-icon button-clear"></button>
+                        <button style="margin-right: 5%;color: #000000;bottom: auto;top:auto;" class="button button-icon button-clear ion-ios7-upload-outline"></button>
                     </div>
-                    <div class="item item-avatar" style="padding-left: 2%">
+                    <div class="item item-avatar" style="padding-left: 2%;margin-top: -12%">
                         <span style="float: right !important; margin-right: 10%">{{p.price | currency}}</span>
                         <h2>{{p.brand}}</h2>
                         <p>{{p.productName}}</p>
@@ -58,17 +58,22 @@
                         <img style="left: 4px;top:4px" src="img/{{p.store.name}}.jpg">
                         <h2 style="text-align: center;">{{p.store.fullName}}</h2>
                     </div>
+                    <!--<div class="item item-image"
+                         style="background-image: url({{p.imgUrl}});background-repeat: no-repeat;"
+                            >
+                        &lt;!&ndash;<div class="image img" style="background-image: url({{p.imgUrl}});background-repeat: no-repeat;
+                            background-position: center center; background-size: cover;"></div>&ndash;&gt;
+                        &lt;!&ndash;<img  src="{{p.imgUrl}}">&ndash;&gt;
+                    </div>-->
                     <div class="item item-image" >
-                        <!--<div class="image img" style="background-image: url('http:{{p.imgUrl}}');background-repeat: no-repeat;
-                            background-position: center center; background-size: cover;"></div>-->
-                        <img  src="http:{{p.imgUrl}}">
+                        <img  src={{UrlWithHttp(p.imgUrl)}}>
                     </div>
-                    <div class="bar" style="margin-left: 2%; margin-top:-10%;background-color: transparent;border: none;">
+                    <div class="item button bar" style="margin-left: 2%; margin-top:-20%;background-color: transparent;border: none;">
                         <button style="margin-right: 95%;color: #000000;padding-top: 0.5%;" ng-click="likeOrUnlike(p)"
-                                ng-class="(p.liked==true) ? 'ion-android-favorite' : 'ion-android-favorite-outline'" class="button button-icon button-clear"></button>
-                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios-upload-outline"></button>
+                                ng-class="(p.liked==true) ? 'ion-ios7-heart' : 'ion-ios7-heart-outline'" class="button button-icon button-clear"></button>
+                        <button style="margin-right: 5%;color: #000000" class="button button-icon button-clear ion-ios7-upload-outline"></button>
                     </div>
-                    <div class="item item-avatar"  style="padding-left: 2%">
+                    <div class="item item-avatar"  style="padding-left: 2%;">
                         <span style="float: right !important; margin-right: 2%">{{p.price | currency}}</span>
                         <h2>{{p.brand}}</h2>
                         <p>{{p.productName}}</p>

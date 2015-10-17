@@ -34,6 +34,12 @@ myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Ap
             addToFavorite(p);
         }
     }
+
+    $scope.UrlWithHttp = function(imageurl){
+        if(imageurl.indexOf('http://')==-1 && imageurl.indexOf('https://')==-1) imageurl='http://'+imageurl;
+        return imageurl;
+    }
+
     var addToFavorite = function(p){
         Api.addToFavorite({productUrl: p.url}).then(function(){
             p.liked = true;
