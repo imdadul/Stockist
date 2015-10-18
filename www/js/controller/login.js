@@ -64,6 +64,7 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
             $cordovaOauth.google("176339995166-fj3ob29suljn5vq6nmssr7nc4hk6t5o6.apps.googleusercontent.com", ["email","profile"],{redirect_uri:'http://localhost:8100/login'}).then(function(result) {
                 $localStorage.accessToken = result.access_token;
                 Api.getGoogleUserID($localStorage.accessToken).then(function(res){
+                    $localStorage.userInfo = {};
                     $localStorage.userInfo.userID = res.data.id;
                     $localStorage.userInfo.provider = 'Google';
                     $localStorage.userInfo.email = res.data.email;

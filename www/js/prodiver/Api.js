@@ -11,7 +11,8 @@ myApp.service('Api', ['$http','$localStorage', function ($http,$localStorage) {
         return baseUrl+url;
     }
     this.getLatestProducts=function(data){
-        data.oauthID = $localStorage.userInfo.userID;
+       // if($localStorage.userInfo == undefined )
+        data.oauthID =$localStorage.userInfo != undefined?$localStorage.userInfo.userID:1;
         var url = 'getLatestProducts'
         return $http({method: 'POST',data:data, url: getFullUrl(url)});
     }

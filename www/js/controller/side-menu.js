@@ -39,6 +39,7 @@ myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegat
 
     $scope.logOut =function(){
         $localStorage.userInfo = {};
+        $localStorage.userID = undefined;
         $localStorage.accessToken = undefined;
         $location.path("/login");
     }
