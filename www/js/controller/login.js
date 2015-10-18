@@ -33,17 +33,19 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
     }
 
     $scope.fbLogin = function() {
-        if($localStorage.accessToken){
+        if($localStorage.userInfo && $localStorage.userInfo.userID && $localStorage.userInfo.provider=='Facebook'){
             $location.path("/home");
         }
         else {
-            $cordovaOauth.facebook("884166234964491", ["email", "public_profile", "user_friends"]).then(function(result) {
+            $cordovaOauth.facebook("884166234964491", ["email", "public_profile"]).then(function(result) {
                 $localStorage.accessToken = result.access_token;
                 Api.getFbUserID($localStorage.accessToken).then(function(res){
-                    $localStorage.userID = res.data.id;
-                    $localStorage.email = res.data.email;
-                    $localStorage.name = res.data.name;
-                    if($localStorage.userID){
+                    $localStorage.userInfo = {};
+                    $localStorage.userInfo.userID = res.data.id;
+                    $localStorage.userInfo.provider = 'Facebook';
+                    $localStorage.userInfo.email = res.data.email;
+                    $localStorage.userInfo.name = res.data.name;
+                    if($localStorage.userInfo.userID){
                         $location.path("/home");
                     }
                 });
@@ -55,22 +57,23 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
     };
 
     $scope.googleLogin = function() {
-        if($localStorage.accessToken){
+        if($localStorage.userInfo && $localStorage.userInfo.userID && $localStorage.userInfo.provider=='Google'){
             $location.path("/home");
         }
         else
-            $cordovaOauth.google("176339995166-p2deqnc9mqohm6lnmkvjti68tr2g4sej.apps.googleusercontent.com",
-                ["https://www.googleapis.com/auth/userinfo.profile"]).then(function(result) {
-                show(JSON.stringify(result))
-                //$localStorage.accessToken = result.access_token;
-                ////show(result.access_token);
-                //if($localStorage.accessToken){
-//
-                //    $location.path("/home");
-                //}
+            $cordovaOauth.google("176339995166-fj3ob29suljn5vq6nmssr7nc4hk6t5o6.apps.googleusercontent.com", ["email","profile"],{redirect_uri:'http://localhost:8100/login'}).then(function(result) {
+                $localStorage.accessToken = result.access_token;
+                Api.getGoogleUserID($localStorage.accessToken).then(function(res){
+                    $localStorage.userInfo.userID = res.data.id;
+                    $localStorage.userInfo.provider = 'Google';
+                    $localStorage.userInfo.email = res.data.email;
+                    $localStorage.userInfo.name = res.data.name;
+                    if($localStorage.userInfo.userID){
+                        $location.path("/home");
+                    }
+                });
             }, function(error) {
-                alert("There was a problem signing in!  See the console for logs");
-                console.log(error);
+                console.log("Error -> " + error);
             });
     };
 

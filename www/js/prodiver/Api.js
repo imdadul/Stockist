@@ -11,17 +11,17 @@ myApp.service('Api', ['$http','$localStorage', function ($http,$localStorage) {
         return baseUrl+url;
     }
     this.getLatestProducts=function(data){
-        data.oauthID = $localStorage.userID;
+        data.oauthID = $localStorage.userInfo.userID;
         var url = 'getLatestProducts'
         return $http({method: 'POST',data:data, url: getFullUrl(url)});
     }
     this.addToFavorite = function(data){
-        data.oauthID = $localStorage.userID;
+        data.oauthID = $localStorage.userInfo.userID;
         var url = 'addToFavorite';
         return $http({method: 'POST',data:data, url: getFullUrl(url)});
     }
     this.deleteFromFavourite = function(data){
-        data.oauthID = $localStorage.userID;
+        data.oauthID = $localStorage.userInfo.userID;
         var url = 'deleteFromFavourite';
         return $http({method: 'POST',data:data, url: getFullUrl(url)});
     }
@@ -32,5 +32,9 @@ myApp.service('Api', ['$http','$localStorage', function ($http,$localStorage) {
     this.getFbUserID = function(access_token){
         // id is provided automatically
         return $http.get("https://graph.facebook.com/v2.2/me", {params: {access_token: access_token, fields: "name,gender,email", format: "json" }});
+    }
+
+    this.getGoogleUserID = function(access_token){
+        return $http.get('https://www.googleapis.com/userinfo/v2/me?access_token='+access_token)
     }
 }]);

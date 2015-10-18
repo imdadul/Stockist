@@ -26,7 +26,7 @@ myApp.controller('HomeTabCtrl', function($scope,$state,$ionicPopover,$timeout,Ap
     };
 
     $scope.likeOrUnlike = function(p){
-        if($localStorage.accessToken == undefined) return;
+        if($localStorage.userID == undefined) return;
         if(p.liked) {
             deleteFromFavourite(p);
         }
