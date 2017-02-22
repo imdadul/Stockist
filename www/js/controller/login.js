@@ -2,7 +2,6 @@
  * Created by Imdadul Huq on 28-Sep-15.
  */
 
-
 myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorage, $location,$ionicPopup,Api,$http) {
 
     var show =function(res){
@@ -37,7 +36,7 @@ myApp.controller("LoginController", function($scope, $cordovaOauth, $localStorag
             $location.path("/home");
         }
         else {
-            $cordovaOauth.facebook("884166234964491", ["email", "public_profile"]).then(function(result) {
+            $cordovaOauth.facebook("957749724326894", ["email", "public_profile"]).then(function(result) {
                 $localStorage.accessToken = result.access_token;
                 Api.getFbUserID($localStorage.accessToken).then(function(res){
                     $localStorage.userInfo = {};
