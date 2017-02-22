@@ -3,7 +3,6 @@
  */
 
 
-
 myApp.controller('SideMenu', function($scope,$ionicPopover,$ionicSideMenuDelegate,$localStorage, $location) {
 
     $ionicPopover.fromTemplateUrl('templates/right-sidebar-filter.html', {
